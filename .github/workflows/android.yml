@@ -15,8 +15,11 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
-          channel: stable
+          # Pin an exact version rather than `channel: stable`. Specifying both
+          # makes the action try to resolve "stable" as a literal version
+          # string and it fails with:
+          #   Unable to determine Flutter version for channel: stable
+          flutter-version: '3.47.6'
           cache: true
 
       - name: Cache Gradle
