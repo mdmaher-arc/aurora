@@ -154,6 +154,25 @@ flutter test
 
 25 behavioural tests covering the resampler and the wire protocol.
 
+### Android APK
+
+A signed-with-debug-keys release APK is built by GitHub Actions on every push
+to `main` — see `.github/workflows/android.yml`. It runs `analyze` and the
+unit tests first, so a regression blocks the APK instead of shipping.
+
+Download the latest from the Releases page:
+<https://github.com/mdmaher-arc/aurora/releases>
+
+Latest: [`v0.1.0` / `aurora-v0.1.0.apk`](https://github.com/mdmaher-arc/aurora/releases/download/v0.1.0/aurora-v0.1.0.apk)
+(62 MB, ABIs `arm64-v8a`, `armeabi-v7a`, `x86_64`).
+
+Install it, grant microphone access, then paste your Gemini API key on the
+first screen.
+
+> The APK is currently signed with the **debug key**, which is fine for
+> sideloading but not for Play Store distribution. Add a release keystore and
+> a `--key-file`/`--key-password` pair to `flutter build apk` before shipping.
+
 ---
 
 ## Known limitations
