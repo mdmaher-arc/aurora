@@ -1,0 +1,37 @@
+name: aurora
+description: A low-latency voice assistant built on the Gemini Live API.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # WebSocket transport to the Live API.
+  web_socket_channel: ^3.0.1
+
+  # Microphone capture. `record` exposes echoCancel / noiseSuppress /
+  # autoGain, which map onto the platform's own voice-communication DSP.
+  record: ^7.1.1
+
+  # Low-latency PCM playback on all six desktop/mobile/web targets.
+  flutter_soloud: ^5.1.5
+
+  # Runtime permission prompts.
+  permission_handler: ^12.0.0
+
+  # Keychain / Keystore storage for the API key.
+  flutter_secure_storage: ^9.2.2
+
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
