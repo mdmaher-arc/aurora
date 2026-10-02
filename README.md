@@ -109,6 +109,31 @@ and hands the short-lived token to the client, which passes it as
 
 ## Running it
 
+### Prerequisites
+
+1. **Flutter 3.47+** (Dart 3.10+). If Flutter's SDK lives outside `C:\`,
+   point at it explicitly:
+   ```powershell
+   $env:Path = "D:\dev\flutter\bin;$env:Path"
+   ```
+
+2. **Developer Mode** — required on Windows, because Flutter creates symlinks
+   for plugins during `flutter pub get`. Without it you get
+   *"Building with plugins requires symlink support"*.
+   ```powershell
+   start ms-settings:developers
+   ```
+
+3. **Visual Studio 2022 Build Tools with the C++ workload** — `flutter_soloud`
+   ships a C++ audio engine compiled through a Dart build hook, so a working
+   `cl.exe` is mandatory on desktop. Install from
+   <https://visualstudio.microsoft.com/downloads/> → *Build Tools* →
+   check **Desktop development with C++**. Run the installer **as
+   administrator**; a non-elevated `--quiet`/`--passive` run exits with code
+   5007 and silently installs nothing.
+
+### Then
+
 ```powershell
 flutter pub get
 flutter run -d windows     # or android / ios / chrome
@@ -116,6 +141,18 @@ flutter run -d windows     # or android / ios / chrome
 
 Paste your Gemini API key on the first screen, pick a voice and persona, and
 press **Start talking**.
+
+> **Web caveat:** on Chrome the page needs one user gesture before audio
+> starts, which is why the app begins with a button rather than connecting
+> immediately.
+
+### Tests
+
+```powershell
+flutter test
+```
+
+25 behavioural tests covering the resampler and the wire protocol.
 
 ---
 
